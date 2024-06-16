@@ -1,0 +1,82 @@
+body {
+    text-align: left;
+    /* background-image: url(../images/hotel-8.jpg); */
+    background-repeat: no-repeat; 
+    background-size: cover;
+    font-family: 'icomoon';
+    background-color: #2C2E3E;
+}
+
+/* body::before {
+    content: "";
+    background-color: rgba(0, 21, 255, 0.3); 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; 
+    opacity: 0.8;
+} */
+
+h1 {
+    font-family: 'icomoon';
+    text-align: center;
+    color: #ccc;
+    /* font-weight: 700; */
+}
+
+h1 a {
+  text-decoration: none; 
+  color: #FFDD00;
+}
+
+h1 a:hover {
+  color: #000000; 
+}
+
+form {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    /* font-weight: bold; */
+    color: #FFDD00;
+    font-size: medium;
+  }
+  
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="number"], 
+  input[type="date"],
+  select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+  }
+  
+  
+  button[type="button"] {
+    background-color: #FFDD00;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'icomoon';
+  }
+  
+  input[type="submit"]:hover {
+    background-color: #45a049;
+  }

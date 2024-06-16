@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="./css/checkout.css">
+  <link rel="stylesheet" href="./css/confirmation.css">
+  <title>Confirmation</title>
+</head>
+<body>
+  <!-- <section class="confirmation">
+    <h1>Booking Confirmation</h1>
+    <p>Thank you for booking with PINCHEZ Tours!</p>
+    <div class="booking-details">
+        <p><strong>Name:</strong> John Doe</p>
+        <p><strong>Email:</strong> johndoe@example.com</p>
+        <p><strong>Tour Package:</strong> Adventure Tour</p>
+        <p><strong>Number of Guests:</strong> 2</p>
+        <p><strong>Travel Date:</strong> October 15, 2023</p>
+    </div>
+    <p>Your booking has been successfully processed.</p>
+    <p>An email confirmation has been sent to your provided email address.</p>
+  </section> -->
+
+  <section class="confirmation">
+    <h1>Booking Confirmation</h1>
+    <p>Thank you for booking with TRAVEL DIARIES BOOKING AGENCY</p>
+    <div class="booking-details">
+        <!-- Display booking details here using JavaScript -->
+    </div>
+    <p>Your booking has been successfully processed.</p>
+    <p>An email confirmation has been sent to your provided email address.</p>
+  </section>
+
+  <button type="button" onclick="redirectToTour()">Back to Home</button>
+
+  <script> src="./js/main.js"</script>
+
+  <script>
+        // Retrieve and display form data on the confirmation page
+        const bookingDetails = document.querySelector(".booking-details");
+        const formDataJSON = localStorage.getItem("checkoutData");
+        if (formDataJSON) {
+            const formData = JSON.parse(formDataJSON);
+
+            // Display the form data
+            for (const [field, value] of Object.entries(formData)) {
+                const detail = document.createElement("p");
+                detail.innerHTML = `<strong>${field}:</strong> ${value}`;
+                bookingDetails.appendChild(detail);
+            }
+        }
+  </script>
+
+  <script>
+      function redirectToTour() {
+      window.location.href="index.html"
+    }
+  </script>
+</body>
+</html>

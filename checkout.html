@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="./css/checkout.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="./js/main.js"></script>
+
+    <!-- Include the PayPal JavaScript SDK -->
+    <script src="https://www.paypal.com/sdk/js?client-id=Ac6Ugfv-vxLNLM3Rb6idptIKBgm2NKUoborRelLuWeeirvPnR6c_gpvwnxKN2L6aTVb5_iCXC2lz15ZK"></script>
+</head>
+<body>
+    <h1>
+      <a href="index.html">Checkout</a>
+    </h1>
+    <h2>Billing Details:</h2>
+    <form id="checkout-form" action="./confirmation.html" method="POST">
+        <label for="fullname">Full name:</label>
+        <input type="text" id="FullName" name="FullName" required><br><br>
+        
+        <!-- <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName" required><br><br> -->
+        
+        <!-- <label for="companyName">Company Name:</label>
+        <input type="text" id="companyName" name="companyName"><br><br> -->
+        <label for="phone">Phone:</label>
+        <input type="text" id="phone" name="phone" required><br><br>
+        
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="country">Country / Region:</label>
+        <input type="text" id="country" name="country" required><br><br>
+        
+        <!-- <label for="streetAddress">Street Address:</label>
+        <input type="text" id="streetAddress" name="streetAddress" required><br><br> -->
+        
+        <!-- <label for="apartment">Apartment, Suite, Unit, Etc.:</label>
+        <input type="text" id="apartment" name="apartment"><br><br> -->
+        
+        <label for="city">Town / City:</label>
+        <input type="text" id="city" name="city" required><br><br>
+        
+        <!-- <label for="state">State:</label>
+        <input type="text" id="state" name="state" required><br><br> -->
+        
+        <label for="zipCode">ZIP Code:</label>
+        <input type="text" id="zipCode" name="zipCode" required><br><br>
+        
+        <h3>Additional Information:</h3>
+        <label for="orderNotes">Order Notes:</label>
+        <textarea id="orderNotes" name="orderNotes" rows="4" cols="50"></textarea><br><br>
+
+    <!-- <h3>Pay using:</h3>
+    <form id="checkout-form" action="process_payment.php" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        
+        <label for="amount">Amount:</label>
+        <input type="text" id="amount" name="amount" required>
+        
+        <label for="payment-method">Payment Method:</label>
+        <select id="payment-method" name="payment-method" required>
+          <option value="paypal">PayPal</option>
+          <option value="mpesa">M-Pesa</option>
+        </select>
+        
+        <div id="paypal-container" style="display: none;">
+          <label for="paypal-email">PayPal Email:</label>
+          <input type="email" id="paypal-email" name="paypal-email">
+        </div>
+        
+        <div id="mpesa-container" style="display: none;">
+          <label for="mpesa-number">M-Pesa Number:</label>
+          <input type="text" id="mpesa-number" name="mpesa-number">
+        </div> -->
+
+    <h3>Pay using:</h3>
+    <form id="checkout-form">
+      <select id="payment-method" onchange="showPaymentForm()">
+        <option value="select" disabled selected>Select Payment Method</option>
+        <option value="paypal">PayPal</option>
+        <option value="mpesa">M-Pesa</option>
+      </select>
+    
+      <div id="paypal-form" style="display: none;">
+        <!-- <label for="paypal-name">Full Name:</label>
+        <input type="email" id="paypal-email" name="paypal-email">
+        <label for="paypal-email">Email:</label>
+        <input type="email" id="paypal-email" name="paypal-email">
+        <button type="button" onclick="redirectToTour()">Confirm now</button> -->
+
+        <div id="paypal-button-container"></div>
+
+      </div>
+    
+      <div id="mpesa-form" style="display: none;">
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" name="name">
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email">
+            
+        <label for="mpesa-account">M-Pesa Account:</label>
+        <input type="text" id="mpesa-account" name="mpesa-account">
+        <button type="button" onclick="redirectToTour()">Confirm now</button>
+      </div>
+    </form>
+
+      <!-- <button type="button" onclick="redirectToTour()">Book now</button>
+      </form> -->
+
+      <!-- Added the below js code -->
+  <script>
+    function redirectToTour() {
+      window.location.href="confirmation.html"
+    }
+
+    function redirectToPayPal() {
+      window.location.href="paypalform.html"
+    }
+
+    function redirectToMpesa() {
+      window.location.href="mpesaform.html"
+    }
+  </script>
+
+  <script>
+    function showPaymentForm() {
+      var paymentMethod = document.getElementById("payment-method").value;
+      var paypalForm = document.getElementById("paypal-form");
+      var mpesaForm = document.getElementById("mpesa-form");
+  
+      if (paymentMethod === "paypal") {
+        paypalForm.style.display = "block";
+        mpesaForm.style.display = "none";
+      } else if (paymentMethod === "mpesa") {
+        mpesaForm.style.display = "block";
+        paypalForm.style.display = "none";
+      } else {
+        paypalForm.style.display = "none";
+        mpesaForm.style.display = "none";
+      }
+    }
+  </script>
+
+<!-- FORM FIELD REQUIRED FUNCTION -->
+<script>
+  function redirectToTour() {
+    // Get form input values
+    const fullName = document.getElementById("FullName").value;
+    const country = document.getElementById("country").value;
+    const streetAddress = document.getElementById("streetAddress").value;
+    const city = document.getElementById("city").value;
+    const zipCode = document.getElementById("zipCode").value;
+    const phone = document.getElementById("phone").value;
+    const email = document.getElementById("email").value;
+
+    // Validate the form fields
+    if (
+      fullName === "" ||
+      country === "" ||
+      streetAddress === "" ||
+      city === "" ||
+      zipCode === "" ||
+      phone === "" ||
+      email === ""
+    ) {
+      alert("Please fill out all required fields.");
+    } else {
+      // All required fields are filled; proceed to the payment page
+      window.location.href = "confirmation.html";
+    }
+  }
+</script>
+
+<!-- PAYPAL PAYMENT GATEAWAY REDIRECT FUNCTION -->
+<script>
+  paypal.Buttons({
+  createOrder: function(data, actions) {
+    // Set up the transaction details
+    return actions.order.create({
+      purchase_units: [
+        {
+          amount: {
+            value: '10.00' // The payment amount
+          }
+        }
+      ]
+    });
+  },
+  onApprove: function(data, actions) {
+    // Capture the funds from the transaction
+    return actions.order.capture().then(function(details) {
+      // Redirect to the confirmation page upon successful payment
+      window.location.href = "confirmation.html";
+    });
+  }
+}).render('#paypal-button-container');
+</script>
+
+
+<script>
+    // Get references to payment method select and containers
+    const paymentMethodSelect = document.getElementById("payment-method");
+  const paypalContainer = document.getElementById("paypal-container");
+  const mpesaContainer = document.getElementById("mpesa-container");
+  
+  // Add an event listener to the payment method select
+  paymentMethodSelect.addEventListener("change", function () {
+	const selectedMethod = paymentMethodSelect.value;
+  
+	// Hide all payment containers
+	paypalContainer.style.display = "none";
+	mpesaContainer.style.display = "none";
+  
+	// Show the selected payment container
+	if (selectedMethod === "paypal") {
+	  paypalContainer.style.display = "block";
+	} else if (selectedMethod === "mpesa") {
+	  mpesaContainer.style.display = "block";
+	}
+  });
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+  // JavaScript for form submission and redirection
+  const checkoutForm = document.getElementById("checkout-form");
+
+  checkoutForm.addEventListener("submit", function (event) {
+    event.preventDefault(); // Prevent the default form submission behavior
+
+    // Process the form data (e.g., validation and payment processing)
+    // Get form data
+    const formData = new FormData(checkoutForm);
+
+    // Store the form data in localStorage
+    const formDataJSON = JSON.stringify(Object.fromEntries(formData));
+    localStorage.setItem("checkoutData", formDataJSON);
+
+    // Redirect to the confirmation page after processing
+    window.location.href = "confirmation.html";
+  });
+
+  // Add a JavaScript event listener to the "Book Now" button
+  document.querySelector(".book-button").addEventListener("click", function() {
+    // Redirect the user to the booking form page when the button is clicked
+    window.location.href = "tours-place-booking.html";
+  });
+
+  // Event listeners to recalculate the total based on package and guests
+  document.querySelector('select[name="pack"]').addEventListener('change', calculateTotal);
+  document.querySelector('input[name="guests"]').addEventListener('change', calculateTotal);
+  
+  console.log(checkoutForm); // This line is okay
+
+  function calculateTotal() {
+    // Implement your total calculation logic here
+  }
+});
+</script>
+
+  <!-- jQuery -->
+  <script src="js/jquery.min.js"></script>
+  <!-- jQuery Easing -->
+  <script src="js/jquery.easing.1.3.js"></script>
+  <!-- Bootstrap -->
+  <script src="js/bootstrap.min.js"></script>
+  <!-- Waypoints -->
+  <script src="js/jquery.waypoints.min.js"></script>
+  <!-- Flexslider -->
+  <script src="js/jquery.flexslider-min.js"></script>
+  <!-- Owl carousel -->
+  <script src="js/owl.carousel.min.js"></script>
+  <!-- Magnific Popup -->
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/magnific-popup-options.js"></script>
+  <!-- Date Picker -->
+  <script src="js/bootstrap-datepicker.js"></script>
+  <!-- Stellar Parallax -->
+  <script src="js/jquery.stellar.min.js"></script>
+  <!-- Main -->
+  <script src="js/main.js"></script>
+    </body>
+    </html>

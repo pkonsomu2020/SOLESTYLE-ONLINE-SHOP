@@ -1,0 +1,93 @@
+/* Add your desired styles for the checkout form here */
+body {
+    font-family: 'icomoon';
+    background-color: #f5f5f5;
+    padding: 20px;
+    background-color: #2C2E3E;
+  }
+  
+  h1 {
+    color: #FFDD00;
+    /* text-decoration: none; */
+  }
+
+  h1 a {
+    text-decoration: none; 
+    color: #FFDD00;
+  }
+
+  h1 a:hover {
+    color: #000000; 
+  }
+  
+  h2 {
+    color: #ff0000;
+  }
+
+  h3 {
+    color: #ff0000;
+  }
+  
+  form {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+  
+  input[type="checkbox"] {
+    margin-bottom: 10px;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th,
+  td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: #FFDD00;
+    color: #000000;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #000000;
+  }
+  
+  /* Add some basic styles for the form */
+  form {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  label {
+    display: block;
+    margin-top: 10px;
+    color: #FFDD00;
+  }
+
+  input[type="submit"] {
+    margin-top: 10px;
+  }

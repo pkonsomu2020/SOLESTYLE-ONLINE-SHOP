@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Box icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" />
+    <!-- Custom StyleSheet -->
+    <link rel="stylesheet" href="./css/styles.css" />
+    <title>SIGN UP | SOLESTYLE SHOP</title>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <div class="top-nav">
+      <div class="container d-flex">
+        <p>Order Online Or Call Us: (001) 2222-55555</p>
+        <ul class="d-flex">
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="navigation">
+      <div class="nav-center container d-flex">
+        <a href="index.html" class="logo">
+          <img src="./images/SOLESTYLE LOGO.jpg" alt="SoleStyle Logo" width="150px" height="auto">
+        </a>
+        <ul class="nav-list d-flex">
+          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="product.html" class="nav-link">Shop</a></li>
+          <li class="nav-item"><a href="aboutus.html" class="nav-link">About</a></li>
+          <li class="nav-item"><a href="contacts.html" class="nav-link">Contact</a></li>
+          <li class="icons d-flex">
+            <a href="login.html" class="icon"><i class="bx bx-user"></i></a>
+            <div class="icon"><i class="bx bx-search"></i></div>
+            <div class="icon"><i class="bx bx-heart"></i><span class="d-flex">0</span></div>
+            <a href="cart.html" class="icon"><i class="bx bx-cart"></i><span class="d-flex">0</span></a>
+          </li>
+        </ul>
+        <div class="hamburger"><i class="bx bx-menu-alt-left"></i></div>
+      </div>
+    </div>
+
+    <!-- Sign up Form -->
+    <div class="container">
+      <div class="login-form">
+        <form id="signup-form" action="/api/users/register" method="POST">
+          <h1>Sign Up</h1>
+          <p>Please fill in this form to create an account. or <a href="login.html">Login</a></p>
+
+          <label for="fullname">Full Name</label>
+          <input type="text" placeholder="Enter Full Name" name="fullname" required />
+
+          <label for="email">Email</label>
+          <input type="email" placeholder="Enter Email" name="email" required />
+
+          <label for="phone">Phone Number</label>
+          <input type="text" placeholder="Enter Phone Number" name="phone" required />
+
+          <label for="password">Password</label>
+          <input type="password" placeholder="Enter Password" name="password" required />
+
+          <label for="passwordRepeat">Repeat Password</label>
+          <input type="password" placeholder="Repeat Password" name="passwordRepeat" required />
+
+          <label>
+            <input type="checkbox" checked="checked" name="remember" style="margin-bottom: 15px" />
+            Remember me
+          </label>
+
+          <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+
+          <div class="buttons">
+            <button type="button" class="cancelbtn">Cancel</button>
+            <button type="submit" class="signupbtn">Sign Up</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="row">
+        <div class="col d-flex">
+          <h4>INFORMATION</h4>
+          <a href="">About us</a>
+          <a href="">Contact Us</a>
+          <a href="">Term & Conditions</a>
+          <a href="">Shipping Guide</a>
+        </div>
+        <div class="col d-flex">
+          <h4>USEFUL LINK</h4>
+          <a href="">Online Store</a>
+          <a href="">Customer Services</a>
+          <a href="">Promotion</a>
+          <a href="">Top Brands</a>
+        </div>
+        <div class="col d-flex">
+          <span><i class="bx bxl-facebook-square"></i></span>
+          <span><i class="bx bxl-instagram-alt"></i></span>
+          <span><i class="bx bxl-github"></i></span>
+          <span><i class="bx bxl-twitter"></i></span>
+          <span><i class="bx bxl-pinterest"></i></span>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Custom Script -->
+    <script src="./js/index.js"></script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const form = document.getElementById('signup-form');
+      
+        form.addEventListener('submit', async (event) => {
+          event.preventDefault();
+
+          const fullName = form.elements['fullname'].value.trim();
+          const email = form.elements['email'].value.trim();
+          const phone = form.elements['phone'].value.trim();
+          const password = form.elements['password'].value.trim();
+          const passwordRepeat = form.elements['passwordRepeat'].value.trim();
+
+          // Validate input
+          if (!fullName || !email || !phone || !password || !passwordRepeat) {
+            alert('All fields are required');
+            return;
+          }
+
+          if (password !== passwordRepeat) {
+            alert('Passwords do not match');
+            return;
+          }
+
+          try {
+            const response = await fetch('/api/users/register', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                fullname: fullName,
+                email: email,
+                phone: phone,
+                password: password,
+              }),
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+              alert('User registered successfully');
+              // Redirect to login page
+              window.location.href = 'login.html';
+            } else {
+              alert(result.message || 'Failed to register user');
+            }
+          } catch (error) {
+            console.error('Error:', error);
+            alert('An error occurred. Please try again.');
+          }
+        });
+      });
+    </script>      
+  </body>
+</html>

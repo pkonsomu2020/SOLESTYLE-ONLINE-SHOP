@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CART | SOLESTYLE SHOP</title>
+    <!-- Box icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" />
+    <!-- Custom StyleSheet -->
+    <link rel="stylesheet" href="./css/styles.css" />
+    <style>
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .cart-item img {
+            margin-right: 10px;
+            width: 50px;
+        }
+
+        .cart-item span {
+            margin-right: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <div class="top-nav">
+        <div class="container d-flex">
+            <p>Order Online Or Call Us: (001) 2222-55555</p>
+            <ul class="d-flex">
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="navigation">
+        <div class="nav-center container d-flex">
+            <a href="index.html" class="logo">
+                <img src="./images/SOLESTYLE LOGO.jpg" alt="Dans Logo" width="150px" height="auto">
+            </a>
+            <ul class="nav-list d-flex">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="product.html" class="nav-link">Shop</a></li>
+                <li class="nav-item"><a href="aboutus.html" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="contacts.html" class="nav-link">Contact</a></li>
+                <li class="icons d-flex">
+                    <a href="login.html" class="icon"><i class="bx bx-user"></i></a>
+                    <div class="icon"><i class="bx bx-search"></i></div>
+                    <div class="icon"><i class="bx bx-heart"></i><span class="d-flex">0</span></div>
+                    <a href="cart.html" class="icon"><i class="bx bx-cart"></i><span class="d-flex">0</span></a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <i class="bx bx-menu-alt-left"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Items -->
+    <div class="container">
+        <h1>Your Cart</h1>
+        <div id="cart-items"></div>
+        <div id="cart-total"></div>
+        <button onclick="proceedToCheckout()">Proceed to Checkout</button>
+        <!-- <a href="checkout.html" class="btn">Proceed to Checkout</a> -->
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="row">
+            <div class="col d-flex">
+                <h4>INFORMATION</h4>
+                <a href="">About us</a>
+                <a href="">Contact Us</a>
+                <a href="">Term & Conditions</a>
+                <a href="">Shipping Guide</a>
+            </div>
+            <div class="col d-flex">
+                <h4>USEFUL LINK</h4>
+                <a href="">Online Store</a>
+                <a href="">Customer Services</a>
+                <a href="">Promotion</a>
+                <a href="">Top Brands</a>
+            </div>
+            <div class="col d-flex">
+                <span><i class="bx bxl-facebook-square"></i></span>
+                <span><i class="bx bxl-instagram-alt"></i></span>
+                <span><i class="bx bxl-github"></i></span>
+                <span><i class="bx bxl-twitter"></i></span>
+                <span><i class="bx bxl-pinterest"></i></span>
+            </div>
+        </div>
+    </footer>
+
+        <!-- Custom Script -->
+        <script src="../js/index.js"></script>
+        <script
+          src="https://code.jquery.com/jquery-3.4.0.min.js"
+          integrity="sha384-JUMjoW8OzDJw4oFpWIB2Bu/c6768ObEthBMVSiIx4ruBIEdyNSUQAjJNFqT5pnJ6"
+          crossorigin="anonymous"
+        ></script>
+        <script src="../js/zoomsl.min.js"></script>
+        <script>
+          $(function () {
+            console.log("hello");
+            $("#zoom").imagezoomsl({
+              zoomrange: [4, 4],
+            });
+          });
+        </script>
+
+    <script>
+        function loadCart() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartTotalContainer = document.getElementById('cart-total');
+            cartItemsContainer.innerHTML = '';
+
+            let total = 0;
+            cart.forEach((item, index) => {
+                total += item.price * item.quantity;
+                const itemElement = document.createElement('div');
+                itemElement.className = 'cart-item';
+                itemElement.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}" />
+                    <span>${item.name}</span>
+                    <span>
+                        <input type="number" value="${item.quantity}" min="1" data-index="${index}" class="quantity-input" />
+                    </span>
+                    <span>Subtotal: $${(item.price * item.quantity).toFixed(2)}</span>
+                    <button onclick="removeFromCart(${index})">Remove</button>
+                `;
+                cartItemsContainer.appendChild(itemElement);
+            });
+
+            const tax = total * 0.25; // Assuming 25% tax
+            const grandTotal = total + tax;
+            cartTotalContainer.innerHTML = `
+                <h2>Subtotal: $${total.toFixed(2)}</h2>
+                <h2>Tax: $${tax.toFixed(2)}</h2>
+                <h2>Total: $${grandTotal.toFixed(2)}</h2>
+            `;
+        }
+
+        function proceedToCheckout() {
+            alert('Proceeding to checkout...');
+            window.location.href = "checkout.html";
+        }
+
+        function removeFromCart(index) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            loadCart();
+        }
+
+        function updateCart() {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            document.querySelectorAll('.quantity-input').forEach(input => {
+                const index = input.getAttribute('data-index');
+                cart[index].quantity = parseInt(input.value);
+            });
+            localStorage.setItem('cart', JSON.stringify(cart));
+            loadCart();
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            loadCart();
+            document.getElementById('cart-items').addEventListener('change', function(event) {
+                if (event.target.classList.contains('quantity-input')) {
+                    updateCart();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

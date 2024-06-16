@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Box icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"
+    />
+    <!-- Custom StyleSheet -->
+    <link rel="stylesheet" href="../css/styles.css" />
+    <title>Reebok Nano X1 - SOLESTYLE</title>
+
+    <style>
+      .gallery {
+        margin-top: 20px;
+        padding-left: 100px;
+      }
+
+      .gallery h2 {
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
+
+      .thumbnail-container {
+        display: flex;
+      }
+
+      .thumbnail-container img {
+        width: 100px; /* Adjust as needed */
+        height: auto;
+        margin-right: 10px;
+        cursor: pointer; /* Optional: add a pointer cursor to indicate clickable */
+      }
+
+      .thumbnail-container img:last-child {
+        margin-right: 0;
+      }
+
+      /* For screens smaller than 768px (typical tablets and phones) */
+      @media (max-width: 768px) {
+          .gallery {
+          margin-top: 20px;
+          padding-left: 30px;
+        }
+
+        .thumbnail-container {
+          flex-wrap: wrap; /* Allow thumbnails to wrap to the next line */
+          justify-content: space-evenly; /* Evenly space thumbnails on smaller screens */
+        }
+
+        .thumbnail-container img {
+          width: 16%; /* Make thumbnails take up 30% of the container width */
+          margin-bottom: 10px; /* Add margin bottom for spacing between thumbnails */
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Navigation -->
+    <div class="top-nav">
+      <div class="container d-flex">
+        <p>Order Online Or Call Us: (001) 2222-55555</p>
+        <ul class="d-flex">
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="navigation">
+      <div class="nav-center container d-flex">
+        <!-- <a href="index.html" class="logo"><h1>Dans</h1></a> -->
+        <a href="../index.html" class="logo">
+          <img src="../images/SOLESTYLE LOGO.jpg" alt="Dans Logo" width="150px" height="auto">
+        </a>
+          <ul class="nav-list d-flex">
+            <li class="nav-item">
+              <a href="../index.html" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item">
+              <a href="../product.html" class="nav-link">Shop</a>
+            </li>
+            <li class="nav-item">
+              <a href="../aboutus.html" class="nav-link">About</a>
+            </li>
+            <li class="nav-item">
+              <a href="../contacts.html" class="nav-link">Contact</a>
+            </li>
+            <li class="icons d-flex">
+            <a href="../login.html" class="icon">
+              <i class="bx bx-user"></i>
+            </a>
+            <div class="icon">
+              <i class="bx bx-search"></i>
+            </div>
+            <div class="icon">
+              <i class="bx bx-heart"></i>
+              <span class="d-flex">0</span>
+            </div>
+            <a href="../cart.html" class="icon">
+              <i class="bx bx-cart"></i>
+              <span class="d-flex">0</span>
+            </a>
+          </li>
+          </ul>
+
+          <div class="icons d-flex">
+            <a href="../login.html" class="icon">
+              <i class="bx bx-user"></i>
+            </a>
+            <div class="icon">
+              <i class="bx bx-search"></i>
+            </div>
+            <div class="icon">
+              <i class="bx bx-heart"></i>
+              <span class="d-flex">0</span>
+            </div>
+            <a href="../cart.html" class="icon">
+              <i class="bx bx-cart"></i>
+              <span class="d-flex">0</span>
+            </a>
+          </div>
+
+          <div class="hamburger">
+            <i class="bx bx-menu-alt-left"></i>
+          </div>
+        </div>
+      </div>
+
+    <!-- Product Details -->
+
+      <section class="section product-detail">
+        <div class="details container">
+          <div class="left image-container">
+            <div class="main">
+              <img src="./Reebok Nano X1/reebok1.jpg" alt="Nike Air Max 270" />
+            </div>
+          </div>
+          <div class="right">
+            <span>Home/Reebok Nano X1</span>
+          <h1>Reebok Nano X1</h1>
+          <div class="price">$50</div>
+            <form>
+              <div>
+                <select id="product-size">
+                  <option value="Select Size" selected disabled>Select Size</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+                </select>
+                <span><i class="bx bx-chevron-down"></i></span>
+              </div>
+            </form>
+            <form class="form">
+              <input type="number" id="quantity" value="1" min="1" />
+              <button type="button" class="addCart" onclick="addToCart()">Add To Cart</button>
+            </form>
+            <h3>Product Detail</h3>
+          <p>
+            The Reebok Nano X1 is designed for cross-training, 
+            offering a Flexweave upper for durability and a 
+            cushioned midsole for responsive comfort.
+          </p>
+          </div>
+        </div>
+      </section>
+
+
+      <!--------------------- Gallery Section--------------- -->
+      <!-- Gallery Section -->
+      <div class="gallery">
+        <h2>Gallery</h2>
+        <div class="thumbnail-container">
+          <img src="./Reebok Nano X1/reebok1.jpg" id="zoom" alt="" />
+          <img src="./Reebok Nano X1/reebok2.webp" alt="Thumbnail 1" />
+          <img src="./Reebok Nano X1/reebok3.avif" alt="Thumbnail 2" />
+          <img src="./Reebok Nano X1/reebok4.avif" alt="Thumbnail 3" />
+          <img src="./Reebok Nano X1/reebok5.avif" alt="Thumbnail 4" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Related -->
+    <section class="section featured">
+      <div class="top container">
+        <h1>Related Products</h1>
+        <a href="../product.html" class="view-more">View more</a>
+      </div>
+
+      <div class="product-center container">
+        <div class="product-item">
+          <div class="overlay">
+            <a href="" class="product-thumb">
+              <img src="../PRODUCT DETAILS/NIKE AIR MAX 270/nike1.png" alt="" />
+            </a>
+          </div>
+          <div class="product-info">
+            <span>MEN'S WEAR</span>
+            <a href="../PRODUCT DETAILS/nikeairmax.html">Nike Air Max 270</a>
+            <h4>$150</h4>
+          </div>
+          <ul class="icons">
+            <li><i class="bx bx-heart"></i></li>
+            <li><i class="bx bx-search"></i></li>
+            <li><i class="bx bx-cart"></i></li>
+          </ul>
+        </div>
+
+
+        <div class="product-item">
+          <div class="overlay">
+            <a href="" class="product-thumb">
+              <img src="../PRODUCT DETAILS/Puma RS-X/puma1.jpg" alt="" />
+            </a>
+            <span class="discount">40%</span>
+          </div>
+          <div class="product-info">
+            <span>MEN'S WEAR</span>
+            <a href="../PRODUCT DETAILS/pumars.html">Puma RS-X</a>
+            <h4>$150</h4>
+          </div>
+          <ul class="icons">
+            <li><i class="bx bx-heart"></i></li>
+            <li><i class="bx bx-search"></i></li>
+            <li><i class="bx bx-cart"></i></li>
+          </ul>
+        </div>
+
+
+        <div class="product-item">
+          <div class="overlay">
+            <a href="" class="product-thumb">
+              <img src="../PRODUCT DETAILS/Suede Knee Length Boot/Suede1.jpg" alt="" />
+            </a>
+          </div>
+          <div class="product-info">
+            <span>WOMEN'S WEAR</span>
+            <a href="../PRODUCT DETAILS/suedeknee.html">Suede Knee Length Boot</a>
+            <h4>$150</h4>
+          </div>
+          <ul class="icons">
+            <li><i class="bx bx-heart"></i></li>
+            <li><i class="bx bx-search"></i></li>
+            <li><i class="bx bx-cart"></i></li>
+          </ul>
+        </div>
+
+
+        <div class="product-item">
+          <div class="overlay">
+            <a href="" class="product-thumb">
+              <img src="../PRODUCT DETAILS/Suede Ankle Boot/ankle1.jpg" alt="" />
+            </a>
+            <span class="discount">40%</span>
+          </div>
+          <div class="product-info">
+            <span>WOMEN'S WEAR</span>
+            <a href="../PRODUCT DETAILS/suedeankle.html">Suede Ankle Boot</a>
+            <h4>$150</h4>
+          </div>
+          <ul class="icons">
+            <li><i class="bx bx-heart"></i></li>
+            <li><i class="bx bx-search"></i></li>
+            <li><i class="bx bx-cart"></i></li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="row">
+        <div class="col d-flex">
+          <h4>INFORMATION</h4>
+          <a href="">About us</a>
+          <a href="">Contact Us</a>
+          <a href="">Term & Conditions</a>
+          <a href="">Shipping Guide</a>
+        </div>
+        <div class="col d-flex">
+          <h4>USEFUL LINK</h4>
+          <a href="">Online Store</a>
+          <a href="">Customer Services</a>
+          <a href="">Promotion</a>
+          <a href="">Top Brands</a>
+        </div>
+        <div class="col d-flex">
+          <span><i class="bx bxl-facebook-square"></i></span>
+          <span><i class="bx bxl-instagram-alt"></i></span>
+          <span><i class="bx bxl-github"></i></span>
+          <span><i class="bx bxl-twitter"></i></span>
+          <span><i class="bx bxl-pinterest"></i></span>
+        </div>
+      </div>
+    </footer>
+    <!-- Custom Script -->
+    <script src="../js/index.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.4.0.min.js"
+      integrity="sha384-JUMjoW8OzDJw4oFpWIB2Bu/c6768ObEthBMVSiIx4ruBIEdyNSUQAjJNFqT5pnJ6"
+      crossorigin="anonymous"
+    ></script>
+    <script src="../js/zoomsl.min.js"></script>
+    <script>
+      $(function () {
+        console.log("hello");
+        $("#zoom").imagezoomsl({
+          zoomrange: [4, 4],
+        });
+      });
+    </script>
+
+    <!-- Gallery Section Thumbnail Functionality -->
+    <script>
+      // Get all thumbnail images
+      var thumbnails = document.querySelectorAll(".thumbnail-container img");
+    
+      // Add click event listener to each thumbnail
+      thumbnails.forEach(function(thumbnail) {
+        thumbnail.addEventListener("click", function() {
+          // Get the source of the clicked thumbnail
+          var newImageSrc = this.src;
+          
+          // Update the main image source
+          var mainImage = document.getElementById("zoom");
+          mainImage.src = newImageSrc;
+        });
+      });
+    </script>
+
+    <!-- ADD TO CART Functionality -->
+    <script>
+      function addToCart() {
+        const productElement = document.querySelector('.product-detail .details');
+        const productId = 1; // Use a unique product ID from your database or API
+        const productName = productElement.querySelector('h1').innerText;
+        const productPrice = parseFloat(productElement.querySelector('.price').getAttribute('data-price'));
+        const productImage = productElement.querySelector('.main img').src;
+        const productQuantity = parseInt(document.getElementById('quantity').value);
+        const productSize = document.getElementById('product-size').value;
+    
+        if (isNaN(productQuantity) || productQuantity <= 0) {
+          alert('Please enter a valid quantity');
+          return;
+        }
+    
+        if (productSize === 'Select Size') {
+          alert('Please select a size');
+          return;
+        }
+    
+        const product = {
+          id: productId,
+          name: productName,
+          price: productPrice,
+          quantity: productQuantity,
+          size: productSize,
+          image: productImage
+        };
+    
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        
+        // Check if the product already exists in the cart
+        const existingProduct = cart.find(item => item.id === product.id && item.size === product.size);
+        if (existingProduct) {
+          existingProduct.quantity += productQuantity; // Increment quantity if product exists
+        } else {
+          cart.push(product); // Add new product to cart
+        }
+    
+        localStorage.setItem('cart', JSON.stringify(cart));
+        window.location.href = "../cart.html";
+      }
+    </script> 
+  </body>
+</html>
